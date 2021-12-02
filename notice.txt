@@ -1,0 +1,160 @@
+처음시작할때 .
+1. 장고 설치 pip install django
+2. 장고 프로젝트 만들고 django-admin startproject config . ## config프로젝트 통합파일 생성
+3. 초기화 python manage.py migrate
+4. 관리자 비밀번호 만들고  python manage.py createsuperuser
+admin 1212
+5. 앱생성하고 python manage.py startapp photo
+
+
+#장고의 기능
+1. 앱만들고 url설정하기
+2. 모델만들고
+    모델 : 데이터베이스 저장됨 데이터가 있으면 해당 데이터를 묘사한다.
+3. 뷰만들고
+    뷰(기능) : 계산, 처리 - 실제 기능, 화면
+4. 유알엘 설정
+    URL 맵핑 : 라우팅 테이블에 기록한다. urls.py에 기록 - 주소를 지정
+5. 템플릿 설정 하기
+    화면에 보여줄 것이 있다. (생년월일)
+
+python manage.py
+    makemigrations photo
+    migrate photo 0001
+
+#pip install
+pip install pillow (이미지파일)
+
+
+## requirements.txt 생성
+$ pip freeze > requirements.txt     #생성
+$ pip install -r requirements.txt   #설치
+
+
+2강 아마존 aws 옵션수정
+파라미터 character
+수정 utf8mb4로 모두 변경
+데이터 베이스 생성
+aws 비번 : 이런미친1
+
+#3강
+pip install pymysql 설치 및
+aws 적용
+1. config - settings.py 에 아마존 aws 엔드포인트 및 아이디 적용
+2. aws에 보안그룹에 인바이드 규칙을 모든 트래픽으로 모든 포트로 변경 하여야지 연결된다 .
+3.  python manage.py makemigrations
+4. python manage.py migrate
+5.  python manage.py createsuperuser
+admin 이런미친1
+
+
+## 4강 mysql설정
+pip install pymysql
+호스트 연결 후
+마이그레이션  다음 슈퍼유저 만들어야됨 !
+그래야지 마이그레이트 됨
+
+
+
+#6강 템플릿을 추가해준다 .
+템플릿을 추가한다 .
+
+#11강
+pip install django-allauth
+
+1. config - 셋팅에 추가해야됨.
+2. migrate
+
+
+
+## 네이버 등록!! 12강!!
+네이버 정보를 어드민 페이지에
+
+#버킷 추가하기  13강!!
+aws에 미디어 스테틱 버킷 추가 하기 !
+aws에 iam에 사용자 추가\
+
+pip install django-storages
+pip install boto3
+
+셋팅 파일에 모든거 설정하고
+python manage.py collectstatic
+
+
+
+##미디어 버킷 추가하기 14강
+셋팅스에 한줄 추가 .
+config-s3media.py 파일 생성후 복사 하세요 .
+
+
+
+## 카트앱 만들기 15강
+데이터 베이스에 담아서 저장하는것은 모델로 사용하고  .
+카트 앱은 세션 방식으로 작업한다 . (데이터베이스에 저장하는것이 아니고 그냥 사용자의 세션에 저장됨 일회성)
+cart.py 만들었음 거기에 모든 설명있음 .
+
+
+## 장바구니 담기 뷰 만들기 !! 16강
+
+## 장바구니 담기 폼 !! 17강 !!
+models forms : 회원가입 , 글쓰기등 원래 있는거
+forms : 일정한 양식만 가져온다 .
+
+## 19강 상세 페이지 만들기 !!
+
+## 21강 쿠폰앱 만들기 !!
+python manage.py startapp coupon
+
+## 26강 아이엠포트 회원가입 및 사용방법 pg결제
+pip install requests
+
+## 27강 아이엠포트.py  정보 입력 !!
+
+## 28가 아이엠포트.py 추가 정보 입력!!
+있는 폼 가지고 와서 쓰는것이 개이득이다 .
+
+## 29강 order모델 만들기 !
+
+## 30강 order모델 만들기 2탄
+
+ForeignKey =  다른테이블의 내용을 가져온다 . !   속성:on_delete = 주문이 지워지면 주문아이템이 다 삭제 된다 . !
+price = models.DecimalField(max_digits=10, decimal_places=2)      #속성(몇자리까지 ?? ,소수점?  ## 제품 가격이 변경되었을때 , 주문당시때 가격이 변경되지 않게 하기위해서 !
+
+## 32강 order모델 만들기 4탄
+임포트 -아이엠포트에서 정보 가져오기 결제가 된뒤에 업데이트 된다 !
+설명: 주문을 한다고 하면 결제관련 테이블을 미리 저장해놓고 , 결제가 완료되었으면 그뒤에 결제완료로 변경되게 한다 .
+sha1을 암호화로 만든다 암호화 작업
+str로 덮는 이유는 텍스트뿐만 아니라 다른글자도 있을경우 에러가 발생하니까 str로 덮는다 .
+
+## 34강 order모델 만들기 6탄 (시그널)
+내가 시킨거 다 했으면 알려줘 ! !
+def order_payment_validation
+
+## 35강
+
+## 36강 order-views.py
+함수형 뷰는 (request)를 항상 불러와야된다 .
+
+
+
+
+
+
+
+
+######### 에러 ########################
+
+## 장고 ,sql 인스톨 버전 다운 그레이 !!
+pip install --upgrade django==3.0.7
+pip install --upgrade pymysql==0.9.3
+
+##데이터베이스 처음 시도 할때 에러 1146
+./manage.py makemigrations
+./manage.py migrate
+
+
+
+설치하기 !!
+
+pip freeze > requirements.txt           ##re.txt파일안에  모든 모듈을 저장한다 .
+

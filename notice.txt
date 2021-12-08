@@ -37,6 +37,28 @@ $ pip install -r requirements.txt   #설치
 데이터 베이스 생성
 aws 비번 : 이런미친1
 
+#파이참 디버깅
+설정 방법 - 런 - 디버깅 구성 - 템플릿 - 파이썬
+장고내의 script 파일 설정
+
+25강 updateview (forms.py 생성후 )
+업데이트 할 폼을 만들어서 그것만 수정한다 . 유저네임의 칸을 비활성화 한다 .
+
+28강 데코레이터 (본인인지 확인하는것 )decorators.py 생성 !
+반복되는 데코레이터 소스를 하나로 만들어서 뿌린다 .
+
+
+
+
+
+
+
+
+
+
+
+
+
 #3강
 pip install pymysql 설치 및
 aws 적용

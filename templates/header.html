@@ -1,30 +1,36 @@
 
-    <div class="pragmatic_header">
+    <div class="snpplus_header">
         <div>
-            <h1 class="pragmatic_logo">SNP PLUS +</h1>
+            <h1 class="snpplus_logo">SNP PLUS +</h1>
         </div>
-        <div class="pragmatic_header_navbar">
-            <a href="#" class="prgmatic_header_nav">
+        <div class="snpplus_header_navbar">
+            <a href="#" class="snpplus_header_nav">
+                <span>SNP 일정</span>
+            </a>
+            <a href="#" class="snpplus_header_nav">
+                <span>창고별 재고</span>
+            </a>
+            <a href="{% url 'articleapp:list' %}" class="snpplus_header_nav">
                 <span>Articles</span>
             </a>
-            <a href="#" class="prgmatic_header_nav">
+            <a href="{% url 'projectapp:list' %}" class="snpplus_header_nav">
                 <span>Projects</span>
             </a>
-            <a href="#" class="prgmatic_header_nav">
+            <a href="{% url 'subscribeapp:list' %}" class="snpplus_header_nav">
                 <span>Subscription</span>
             </a>
             {% if not user.is_authenticated %}
-            <a href="#" class="prgmatic_header_nav">
+            <a href="{% url 'accounts:login' %}?next={{ request.path }}" class="snpplus_header_nav">
                 <span>login</span>
             </a>
-            <a href="#" class="prgmatic_header_nav">
-                <span>SignUp</span>
+            <a href="{% url 'accounts:create' %}" class="snpplus_header_nav">
+                <span>3초 회원가입</span>
             </a>
             {% else %}
-            <a href="#" class="prgmatic_header_nav">
+            <a href="{% url 'accounts:detail' pk=user.pk %}" class="snpplus_header_nav">
                 <span>MyPage</span>
             </a>
-            <a href="#" class="prgmatic_header_nav">
+            <a href="{% url 'accounts:logout' %}?next={{ request.path }}" class="snpplus_header_nav">
                 <span>logout</span>
             </a>
             {% endif %}

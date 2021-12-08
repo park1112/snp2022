@@ -85,5 +85,5 @@ media/
 
 staticfiles/
 
-aws_pragmatic_key.pem
+aws_snpplus_key.pem
 docker-compose_traefik.yml

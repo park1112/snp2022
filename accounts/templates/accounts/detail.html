@@ -14,7 +14,7 @@
           {% if target_user == user %}
           <a class="material-icons"
              style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem;"
-             href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
+             href="{% url 'profiles:update' pk=target_user.profile.pk %}">
               edit
           </a>
           {% endif %}
@@ -24,27 +24,27 @@
       </h5>
       {% else %}
         {% if target_user == user %}
-        <a href="{% url 'profileapp:create' %}">
-          <h2 style="font-family: 'NanumSquareB'">
-            Create Profile
-          </h2>
+      <div>
+         <a class="material-icons md-48"
+           style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem; margin: 1rem;"
+           href="{% url 'profiles:create' %}">
+            account_circle
         </a>
-        {% else %}
-        <h2>
-          닉네임 미설정
-        </h2>
+          프로필을 등록해주세요.
+
+      </div>
         {% endif %}
       {% endif %}
 
       {% if target_user == user %}
         <a class="material-icons"
            style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem;"
-           href="{% url 'accountapp:update' pk=user.pk %}">
+           href="{% url 'accounts:update' pk=user.pk %}">
             settings
         </a>
         <a class="material-icons"
            style="box-shadow: 0 0 4px #fcc; border-radius: 10rem; padding: .4rem;"
-           href="{% url 'accountapp:delete' pk=user.pk %}">
+           href="{% url 'accounts:delete' pk=user.pk %}">
             cancel
         </a>
       {% endif %}

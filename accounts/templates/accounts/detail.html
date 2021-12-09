@@ -25,14 +25,18 @@
       {% else %}
         {% if target_user == user %}
       <div>
-         <a class="material-icons md-48"
-           style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem; margin: 1rem;"
-           href="{% url 'profiles:create' %}">
-            account_circle
-        </a>
-          프로필을 등록해주세요.
-
+        <div>
+           <a class="material-icons md-48"
+             style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem; margin: 1rem;"
+             href="{% url 'profiles:create' %}">
+              manage_accounts
+          </a>
+        </div>
+        <div style=" border-radius: 10rem; padding: .3rem; margin: 0.5rem;">
+            프로필을 등록해주세요.
+        </div>
       </div>
+
         {% endif %}
       {% endif %}
 

@@ -21,7 +21,7 @@ from django.urls import path, include
 from articleapp.views import ArticleListView
 
 urlpatterns = [
-    path('', ArticleListView.as_view(),name='home'),
+    # path('', ArticleListView.as_view(),name='home'),
 
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
@@ -31,5 +31,10 @@ urlpatterns = [
     path('projects/', include('projectapp.urls')),
     path('subscribe/', include('subscribeapp.urls')),
     path('likes/', include('likeapp.urls')),
+    # path('accounts/', include('allauth.urls')),
+    path('cart/', include('cart.urls')),
+    path('coupon/', include('coupon.urls')),
+    path('order/', include('order.urls')),
+    path('', include('shop.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

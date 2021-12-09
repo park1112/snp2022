@@ -4,7 +4,7 @@
             <h1 class="snpplus_logo">SNP PLUS +</h1>
         </div>
         <div class="snpplus_header_navbar">
-            <a href="#" class="snpplus_header_nav">
+            <a href="{% url 'shop:product_all' %}" class="snpplus_header_nav">
                 <span>SNP 일정</span>
             </a>
             <a href="#" class="snpplus_header_nav">
@@ -34,5 +34,18 @@
                 <span>logout</span>
             </a>
             {% endif %}
+            <a href="{% url 'admin:login' %}" class="snpplus_header_nav">
+                <span>관리자모드</span>
+            </a>
+            <!--    카트 추가 !!            -->
+            <a href="{% url 'cart:detail' %}" class="snpplus_header_nav" >
+                Cart
+                {% if cart|length > 0 %}
+                    ${{ cart.get_total_price }} with {{cart|length}} items
+                {% else %}
+                    : Empty
+                {% endif %}
+            </a>
+
         </div>
     </div>

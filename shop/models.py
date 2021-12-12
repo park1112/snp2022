@@ -6,7 +6,7 @@ class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     meta_description = models.TextField(blank=True)     #카테고리 설명
 
-    slug = models.SlugField(max_length=200, db_index=True, unique=True, allow_unicode=True, verbose_name="Slog(영어만가능)") #
+    slug = models.SlugField(max_length=200, db_index=True, unique=True, allow_unicode=True, verbose_name="Slog(검색을위한)") #
 
     class Meata:        # 기본정렬값 , 이름 , 카테고리 , 순
         ordering = ['name']
@@ -23,7 +23,7 @@ class ProductType(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     meta_description = models.TextField(blank=True)     #카테고리 설명
 
-    slug = models.SlugField(max_length=200, db_index=True, unique=True, allow_unicode=True, verbose_name="Slog(영어만가능)") #
+    slug = models.SlugField(max_length=200, db_index=True, unique=True, allow_unicode=True, verbose_name="Slog(검색을위한)") #
 
     class Meata:        # 기본정렬값 , 이름 , 카테고리 , 순
         ordering = ['name']
@@ -43,7 +43,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='products', verbose_name="품명")   #카테고리가 삭제되어도 제품은 삭제되지 않는다 , 삭제가능, 카테고리 입장에서 어떻게 불러올거야? 별도의 이름 설정
     product_type = models.ForeignKey(ProductType, on_delete=models.SET_NULL, null=True, related_name='types', verbose_name="종류(KG)")
     name = models.CharField(max_length=200, db_index=True, verbose_name="이름")
-    slug = models.SlugField(max_length=200, db_index=True, unique=True, allow_unicode=True, verbose_name="Slog")
+    slug = models.SlugField(max_length=200, db_index=True, unique=True, allow_unicode=True, verbose_name="Slog(검색을위한)")
 
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
     description = models.TextField(blank=True, verbose_name="설명")

@@ -11,3 +11,5 @@ class Profile(models.Model):
           #미디어 밑에 프로파일이라는 폴더에 추가된다 . 꼭 안올려도 된다 .
     nickname = models.CharField(max_length=20, unique=True, null=True)      #유니크=중복값없어야된다.
     message = models.CharField(max_length=100, null=True)   #대화명
+
+

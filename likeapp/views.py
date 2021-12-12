@@ -29,7 +29,7 @@ def db_transaction(user, article):
 @method_decorator(login_required, 'get')
 class LikeArticleView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
-        return reverse('articleapp:detail', kwargs={'pk': kwargs['pk']})
+        return reverse('client:detail', kwargs={'pk': kwargs['pk']})
 
     def get(self, *args, **kwargs):
 
@@ -41,6 +41,6 @@ class LikeArticleView(RedirectView):
             messages.add_message(self.request, messages.SUCCESS, '좋아요가 반영되었습니다.')
         except ValidationError:
             messages.add_message(self.request, messages.ERROR, '좋아요는 한번만 가능합니다.')
-            return HttpResponseRedirect(reverse('articleapp:detail', kwargs={'pk': kwargs['pk']}))
+            return HttpResponseRedirect(reverse('client:detail', kwargs={'pk': kwargs['pk']}))
 
         return super(LikeArticleView, self).get(self.request, *args, **kwargs)

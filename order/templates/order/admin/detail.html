@@ -23,11 +23,11 @@
     </ul>
     <table>
         <tr>
-            <th>Created</th>
+            <th>주문시간</th>
             <td>{{order.created}}</td>
         </tr>
         <tr>
-            <th>Customer</th>
+            <th>이름</th>
             <td>{{order.first_name}} {{order.last_name}}</td>
         </tr>
         <tr>
@@ -35,11 +35,11 @@
             <td>{{order.email}}</td>
         </tr>
         <tr>
-            <th>Address</th>
+            <th>주소</th>
             <td>{{order.address}} {{order.postal_code}} {{order.city}}</td>
         </tr>
         <tr>
-            <th>Total amount</th>
+            <th>총 금액</th>
             <td>{{order.get_total_price}}</td>
         </tr>
     </table>

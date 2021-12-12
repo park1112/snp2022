@@ -24,7 +24,7 @@ class CommentCreateView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('articleapp:detail', kwargs={'pk': self.object.article.pk})
+        return reverse('client:detail', kwargs={'pk': self.object.article.pk})
 
 
 @method_decorator(comment_ownership_required, 'get')
@@ -35,4 +35,4 @@ class CommentDeleteView(DeleteView):
     template_name = 'commentapp/delete.html'
 
     def get_success_url(self):
-        return reverse('articleapp:detail', kwargs={'pk': self.object.article.pk})
+        return reverse('client:detail', kwargs={'pk': self.object.article.pk})

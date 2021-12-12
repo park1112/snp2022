@@ -72,10 +72,13 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.naver',
+    'allauth.socialaccount.providers.naver',
     'cart',
     'coupon',
     'order',
+    'phonenumber_field',
+    'client',
+
 
 
 
@@ -165,27 +168,44 @@ USE_TZ = True
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_REGION = 'ap-northeast-2'
-AWS_STORAGE_BUCKET_NAME = 'onlineshop-glowingedge'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME, AWS_REGION)
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_CUSTOM_DOMAIN = f's3.{AWS_REGION}.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}'
+
+AWS_S3_FILE_OVERWRITE = False
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 AWS_DEFAULT_ACL = 'public-read'
 AWS_LOCATION = 'static'
 
+# STATIC_URL = f'http://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}'
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#복붙후 python manage.py collectstatic 해주면 다 올라감
 #aws 설치완료
+
+#aws s3 media파일 올리기 추가 및 s3media파일생성
+DEFAULT_FILE_STORAGE = 'config.s3media.MediaStorage'
+
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 네이버 로그인 백앤즈 추가    11강
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+# 네이버 로그인 백앤즈 추가
 
 SITE_ID = 1
 
@@ -197,3 +217,5 @@ LOGOUT_REDIRECT_URL = '/'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = (os.path.join(BASE_DIR, 'media'))
+
+CART_ID = 'cart_item'

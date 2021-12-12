@@ -11,8 +11,10 @@ def add(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
 
+    # 클라이언 -> 서버로 데이터를 전달
+    # 유효성 검사, injection 전처리
     form = AddProductForm(request.POST)
-    if form.is_valid():
+    if form.is_valid():         #폼에 들어온 데이터가 괜찮니 ? 확인후 밑으로
         cd = form.cleaned_data
         cart.add(product=product, quantity=cd['quantity'], is_update=cd['is_update'])
 
